@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatmap</title>
+</head>
+<body>
+
+    <h2>Demand vs. Supply Heatmap</h2>
+    <div id="heatmap"></div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        fetch("/heatmap_data")
+            .then(response => response.json())
+            .then(data => {
+                let plotData = JSON.parse(data);
+                Plotly.newPlot("heatmap", plotData.data, plotData.layout);
+            });
+    </script>
+
+</body>
+</html>
